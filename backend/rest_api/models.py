@@ -12,4 +12,4 @@ class Category(models.Model):
 class Link(models.Model):
     url = models.CharField(max_length=100)
     category = models.ForeignKey(Category, related_name='category')
-
+    description = models.CharField(max_length=500, null=True)
