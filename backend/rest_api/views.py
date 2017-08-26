@@ -1,8 +1,10 @@
+from django.http import JsonResponse
+from django.core import serializers
+
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
-
-from django.http import JsonResponse
+from rest_framework.renderers import JSONRenderer
 
 from rest_api.serializers import LinkSerializer, CategorySerializer
 from rest_api.models import Link, Category
@@ -39,6 +41,10 @@ def link_details(request, pk):
         return JsonResponse(link_serializer)
 
 
+def link_list():
+    pass
+
+
 ################
 #   Category   #
 ################
@@ -59,10 +65,11 @@ def category_details(request, pk):
     }
     return JsonResponse(data)
 
-
-def link_list():
-    pass
-
-
-def category_list():
-    pass
+@api_view(['GET'])
+def category_list(request):
+    json = []
+    for category in Category.objects.all():
+        json.append(JSONRenderer().render(CategorySerializer(category).data))
+    # categories = Category.objects.all()
+    # json = serializers.serialize('json', categories)
+    return Response(json)

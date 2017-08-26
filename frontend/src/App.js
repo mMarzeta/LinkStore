@@ -19,21 +19,21 @@ class App extends Component {
       receivedData: "",
     }
   }
-
-  componentWillMount() {
-    axios({
-      method: 'get',
-      responseType: 'json',
-      url: 'http://127.0.0.1:8000/link-store/',
-
-    })
-      .then(response => {
-        this.setState({
-          receivedData: response.data,
-        });
-        console.log("data: " + response + "status: " + response.status);
-      })
-  }
+  //
+  // componentWillMount() {
+  //   axios({
+  //     method: 'get',
+  //     responseType: 'json',
+  //     url: 'http://127.0.0.1:8000/link-store/',
+  //
+  //   })
+  //     .then(response => {
+  //       this.setState({
+  //         receivedData: response.data,
+  //       });
+  //       console.log("data: " + response + "status: " + response.status);
+  //     })
+  // }
 
 
   render() {

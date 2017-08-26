@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class AddCategory extends Component {
 
-  handleSubmit(e) {
+  handleSubmit(event) {
     this.createCategory(this.refs.title.value, this.refs.description.value);
   }
 
